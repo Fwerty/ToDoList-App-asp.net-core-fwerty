@@ -1,0 +1,89 @@
+﻿<style>
+    .flex-container {
+        display: flex;
+        justify-content: space-between; /* İki div arasında boşluk bırakır */
+        align-items: center; /* Dikey hizalama */
+    }
+</style>
+
+
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<Product>
+
+
+@if (@TempData["status"] != null)
+{
+    <div class="alert alert-primary" role="alert" style="margin-top:32px">
+        @TempData["status"]
+    </div>
+}
+
+
+<br />
+<button type="button" class="btn btn-primary">
+    <a asp-controller="Products" asp-action="Add" style="color:white;text-decoration: none;">Add new event</a>
+</button>
+
+<br />
+<br />
+
+
+
+<div class="list-group">
+
+
+    @foreach (var item in Model)
+    {
+
+
+
+        @if (item.url != null)
+        {
+            <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                @item.Description
+            </button>
+        }
+        else
+        {
+            <button type="button" class="list-group-item list-group-item-action">@item.Description</button>
+        }
+
+
+    }
+
+
+</div>
+
+
+
+
+
+
+
+@*    <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                        @item.Description
+                    </button>
+                </div>
+
+ *@
+
+
+
+@* <a asp-controller="Products" asp-action="Remove" asp-route-id="@item.Id">Remove </a> *@
+@* <a asp-controller="Products" asp-action="Update" asp-route-id="@item.Id">Update </a>   *@
+
+
+
+@* <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                        </label>
+                    </div> *@
+
