@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using myAppToDoList.Areas.Identity.Data;
 
 
+// git ile commit time
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DBContextSampleConnection") ?? throw new InvalidOperationException("Connection string 'DBContextSampleConnection' not found.");
 
