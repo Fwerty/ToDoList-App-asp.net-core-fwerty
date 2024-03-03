@@ -34,52 +34,7 @@
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
-    @* hazır resim template leri *@
-    @* <div class="col">
-    <div class="card">
-    <img src="https://i.postimg.cc/Bv3TtFkj/indir.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a longer ca little bit longer.</p>
-    </div>
-    </div>
-    </div>
-    <div class="col">
-    <div class="card">
-    <img src="https://i.postimg.cc/mgsj1KFZ/0-F987-BEC-6706-46-E8-B616-1-EA9-F49-BC1-CE.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a longer c. This content is a little bit longer.</p>
-    </div>
-    </div>
-    </div>
-    <div class="col">
-    <div class="card">
-    <img src="https://i.postimg.cc/mgsj1KFZ/0-F987-BEC-6706-46-E8-B616-1-EA9-F49-BC1-CE.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a longer  natural lead-in to additional content.</p>
-    </div>
-    </div>
-    </div>
-    <div class="col">
-    <div class="card">
-    <img src="https://i.postimg.cc/mgsj1KFZ/0-F987-BEC-6706-46-E8-B616-1-EA9-F49-BC1-CE.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a longer  natural lead-in to additional content.</p>
-    </div>
-    </div>
-    </div>
-    <div class="col">
-    <div class="card">
-    <img src="https://i.postimg.cc/Bv3TtFkj/indir.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a longer ca little bit longer.</p>
-    </div>
-    </div>
-    </div> *@
+    
 
     @foreach (var item in Model)
     {
@@ -103,12 +58,7 @@
                             <p class="card-text">@item.Description</p>
                         </div>
                         <div>
-                            @* <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-
-                        </label>
-                        </div> *@
+                           
                             <button type="button" class="btn btn-primary">
                                 <a asp-controller="Products" asp-action="Update" asp-route-id="@item.Id" style="color:white;text-decoration:none">Update </a>
                             </button>

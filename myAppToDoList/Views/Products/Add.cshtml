@@ -11,39 +11,8 @@
 @model Product
 
 
-@* -------------------------------------------------------------------------- *@
-@* <form asp-controller="Products" asp-action="SaveProduct" method="post"> *@
-
-
-
-@*     <label>urun ismi</label>
-    <input type="text" asp-for="Name" />
-    <br />
-
-    <label>urun fiyatı</label>
-    <input type="text" asp-for="Price" />
-    <br />
-
-    <label>urun stoğu</label>
-    <input type="text" asp-for="Stock" />
-    <br />
-
-    <label>urun rengi</label>
-    <input type="text" asp-for="Color" />
-    <br />
-
-    <button type="submit">kaydet</button> *@
-@* type ifadesini button yaparsan bilgiler backend kısmına gitmez *@
-
-@* </form> *@
-@* -------------------------------------------------------------------------- *@
-
-
 <form asp-controller="Products" asp-action="SaveProduct" method="post" enctype="multipart/form-data">
-    @* <div class="form-group">
-    <label asp-for="Name">urun ismi</label>
-    <input class="form-control" type="text" asp-for="Name" />
-    </div> *@
+ 
 
 
     <div class="form-group">
@@ -51,95 +20,8 @@
         <input class="form-control" type="text" asp-for="Name" placeholder="başlık" />
     </div>
 
-    @*
-    <div class="form-group">
-    <label asp-for="Price">urun fiyatı</label>
-    <input class="form-control" type="text" asp-for="Price" />
-    </div> *@
-
-    @*     <div class="form-group">
-    <label asp-for="Stock">urun stoğu</label>
-    <input class="form-control" asp-for="Stock" />
-    </div>
-
-    <div class="form-group">
-    <label asp-for="Color">urun rengi</label>
-    <input class="form-control" type="text" asp-for="Color">
-    </div>
-    <br /> *@
-
-    @* <div class="mb-3">
-    <select class="form-select" asp-for="Color2" asp-items="@ViewBag.ColorSelect">
-    <option value="">renk seçiniz</option>
-    </select>
-    </div>
-    *@
-    @* <div class="form-check">
-    <input class="form-check-input" asp-for="isPublish">
-    <label class="form-check-label" asp-for="isPublish">
-    yayınlansın mı?
-    </label>
-    </div>
-    *@
-
-    @*
-    <span>ürün kaç ay stokta kalsın ?</span>
-    @foreach (var item in @ViewBag.Expire as List<string>)
-    {
-    <div class="form-check">
-    <input class="form-check-input" type="radio" id="@item" asp-for="Expire" value="@item">
-    <label class="form-check-label" asp-for="Expire" for="@item">
-    @item
-    </label>
-    </div>
-    }
-    *@
 
 
-    @*     <span>ürün kaç ay stokta kalsın ?</span>
-    @foreach (var item in @ViewBag.Expire2 as Dictionary<string, int>)
-    {
-    <div class="form-check">
-    <input class="form-check-input" type="radio" id="@item.Value" asp-for="Expire2" value="@item.Value">
-    <label class="form-check-label" asp-for="Expire2" for="@item.Value">
-    @item.Key
-    </label>
-    </div>
-    } *@
-
-
-
-    @* guzel gozukur çalışmaz *@
-    @*     <div class="row form-group" style="background-color: #f0f0f0; padding: 10px;">
-    <label for="date" class="col-sm-1 col-form-label" asp-for="PublishDate" style="color: blue;">Date</label>
-    <div class="col-sm-4">
-    <div class="input-group date" id="datepicker">
-    <input type="datetime" class="form-control" asp-for="PublishDate">
-    <span class="input-group-append">
-    <span class="input-group-text bg-white d-block">
-    <i class="fa fa-calendar"></i>
-    </span>
-    </span>
-    </div>
-    </div>
-    </div> *@
-
-    @* çalışır *@
-    @*  <div class="row form-group" style="background-color: #f0f0f0; padding: 10px;">
-    <label for="date" class="col-sm-1 col-form-label" style="color: blue;">Date</label>
-    <div class="col-sm-4">
-    <!-- Sadece tarih girişi için type="date" kullanılıyor -->
-    <input type="date" class="form-control" asp-for="PublishDate">
-    </div>
-    </div>
-    *@
-
-
-    @*  @Html.Label("choose image")
-    <input type="file" name="url" >
-    <br />
-
-    *@
 
     <div class="mb-3">
         <label for="formFile" class="form-label"></label>
@@ -156,11 +38,6 @@
         </div>
         <button type="submit" class="btn btn-primary" name="submit" autocomplete="off"> kaydet </button>
     </form>
-
-
-    @* <button type="submit">kaydet</button> *@
-    @* <button type="submit" class="btn btn-primary">kaydet</button> *@
-    @* type ifadesini button yaparsan bilgiler backend kısmına gitmez *@
 
 
 

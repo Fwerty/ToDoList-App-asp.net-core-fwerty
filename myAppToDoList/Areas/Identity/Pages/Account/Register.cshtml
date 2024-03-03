@@ -1,85 +1,181 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    Layout = null;
 }
 
-<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - myAppToDoList</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/myAppToDoList.styles.css" asp-append-version="true" />
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+    <style>
+        .navbar-nav .nav-link {
+            font-size: 23px; /* Yazı boyutunu istediğiniz değere ayarlayın */
+        }
 
+        .navbar {
+            padding: 8px; /* Navbar boyutunu istediğiniz değere ayarlayın */
+        }
+    </style>
 
-            <div class="form-floating">
-                <input asp-for="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.FirstName"></label>
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+</head>
+<body>
+    <header>
+       
+        <nav class="navbar navbar-expand-lg" style="background-color: #2a3035;">
+            <div class="container-fluid" style="color:white">
+                <a class="navbar-brand" style="color:white;padding-right:5px;padding-left:5px;font-size: 23px;"
+                   asp-area="" asp-controller="Home" asp-action="Index">ToDoList</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" style="color:white"
+                               asp-area="" asp-controller="Products" asp-action="Index">Gallery </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:white"
+                               asp-area="" asp-controller="Products" asp-action="WishListPage">Wishlist </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" style="color:white;">
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:white;display: flex;align-items: center;"
+                               asp-area="" asp-controller="Products" asp-action="MyAccount">My Account </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="form-floating">
-                <input asp-for="Input.LastName" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.LastName"></label>
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main">
+
+            @* RENDERSECTİON BODY *@
 
 
-
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
-                                article
-                                about setting up this ASP.NET application to support logging in via external services
-                            </a>.
-                        </p>
-                    </div>
+            <style>
+                .gradient-custom {
+                    /* fallback for old browsers */
+                    background: #6a11cb;
+                    /* Chrome 10-25, Safari 5.1-6 */
+                    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+                    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
                 }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
+
+                body {
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+                .container-fluid {
+                    padding-right: 0px;
+                    padding-left: 0px;
+                }
+
+                .vh-100 {
+                    height: 129vh !important; /* Önceliği artırmak için !important kullanabilirsiniz */
+                }
+
+            </style>
+
+
+
+            <section class="vh-100 gradient-custom " style="height:10px;width:1349px;padding-right:20px;">
+
+                <br />
+
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="container-fluid  h-100" style="padding-top:30px;padding-bottom:35px">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                                <div class="card bg-dark text-white">
+                                    <div class="card-body p-3 text-center">
+
+
+                                        <div class="  pb-95">
+                                            <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                                            <p class="text-white-50 mb-5">Create a new account</p>
+
+
+
+                                            <div class="form-outline form-white mb-4">
+                                                <input asp-for="Input.FirstName" class="form-control form-control-lg"
+                                                       autocomplete="username" aria-required="true"placeholder="First name" />
+                                                <label  class="form-label"></label>
+                                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-outline form-white mb-4">
+                                                <input asp-for="Input.LastName" class="form-control form-control-lg"
+                                                       autocomplete="username" aria-required="true" placeholder="last name" />
+                                                <label  class="form-label"></label>
+                                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                            </div>
+
+
+                                            <div class="form-outline form-white mb-4">
+                                                <input asp-for="Input.Email" class="form-control form-control-lg"
+                                                       autocomplete="username" aria-required="true" placeholder="E mail" />
+                                                <label class="form-label"></label>
+                                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-outline form-white mb-4">
+                                                <input asp-for="Input.Password" class="form-control form-control-lg"
+                                                       autocomplete="current-password" aria-required="true" placeholder="Password" />
+                                                <label class="form-label"></label>
+                                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-outline form-white mb-4">
+                                                <input asp-for="Input.ConfirmPassword" class="form-control form-control-lg" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
+                                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                            </div>
+                                            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
-</div>
+                    </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+                </form>
+
+
+
+            </section>
+
+
+        </main>
+    </div>
+
+    <footer>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+
+
+
+
+
